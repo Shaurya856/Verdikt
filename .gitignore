@@ -1,0 +1,47 @@
+# Environment
+.env
+.venv/
+venv/
+
+# Streamlit local config
+.streamlit/config.toml
+.streamlit/secrets.toml
+
+# Python
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.eggs/
+*.so
+*.log
+pip-wheel-metadata/
+.python-version
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+*.manifest
+*.spec
+
+# Packaging
+*.egg
+*.eggs
+*.whl
+
+# Virtual environments
+env/
+ENV/
+
+# Editor and IDE
+.vscode/
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
