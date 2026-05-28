@@ -1,47 +1,46 @@
-# Environment
+# ── Secrets / environment ─────────────────────────────────────────────────────
 .env
-.venv/
-venv/
-
-# Streamlit local config
-.streamlit/config.toml
+# Real secrets — see .streamlit/secrets.toml.example for the template
 .streamlit/secrets.toml
 
-# Python
+# ── Virtual environments ──────────────────────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+
+# ── Python build artefacts ────────────────────────────────────────────────────
 __pycache__/
 **/__pycache__/
 *.py[cod]
 *.pyo
 *.pyd
+*.so
+*.egg
+*.eggs
 *.egg-info/
+*.whl
 dist/
 build/
 .eggs/
-*.so
-*.log
 pip-wheel-metadata/
 .python-version
+
+# ── Test / coverage artefacts ─────────────────────────────────────────────────
 .pytest_cache/
 .coverage
 .coverage.*
 htmlcov/
-*.manifest
-*.spec
 
-# Packaging
-*.egg
-*.eggs
-*.whl
+# ── Type checker caches ───────────────────────────────────────────────────────
+.mypy_cache/
+.ruff_cache/
 
-# Virtual environments
-env/
-ENV/
-
-# Editor and IDE
+# ── Editor / IDE ──────────────────────────────────────────────────────────────
 .vscode/
 .idea/
 *.iml
 
-# OS
+# ── OS ────────────────────────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db

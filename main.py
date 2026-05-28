@@ -11,10 +11,14 @@ load_dotenv()
 
 
 def _check_api_key():
-    if not os.getenv("GOOGLE_API_KEY"):
+    from fact_checker.utils.llm_client import PROVIDERS, available_providers, _PROVIDER_PRIORITY
+
+    if not available_providers():
+        keys = ", ".join(PROVIDERS[p]["env_key"] for p in _PROVIDER_PRIORITY)
         print(
-            "Error: GOOGLE_API_KEY is not set.\n"
-            "Get a free key from https://aistudio.google.com/apikey and add it to your .env file.",
+            f"Error: No LLM provider API key is configured.\n"
+            f"Set at least one of: {keys}\n"
+            f"See .env.example for details.",
             file=sys.stderr,
         )
         sys.exit(1)

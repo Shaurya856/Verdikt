@@ -40,22 +40,67 @@ st.markdown(
 st.title("🔍 Document Verification System")
 st.caption("Evidence-grounded, claim-level verification — no black-box confidence scores.")
 
-# ── API key check ─────────────────────────────────────────────────────────────
+# ── Provider setup ────────────────────────────────────────────────────────────
+# Promote any keys defined in Streamlit secrets into the environment so
+# llm_client.available_providers() can find them.
 
-api_key = os.getenv("GOOGLE_API_KEY") or st.secrets.get("GOOGLE_API_KEY", "")
-if not api_key:
+_SECRET_KEYS = ("GROQ_API_KEY", "NVIDIA_API_KEY", "OPENROUTER_API_KEY", "GOOGLE_API_KEY")
+for _k in _SECRET_KEYS:
+    if not os.getenv(_k):
+        _v = st.secrets.get(_k, "")
+        if _v:
+            os.environ[_k] = _v
+
+from fact_checker.utils.llm_client import PROVIDERS, available_providers  # noqa: E402
+
+_available = available_providers()
+
+if not _available:
     st.error(
-        "**GOOGLE_API_KEY not set.**  \n"
-        "Add it to `.env` locally, or to **Secrets** in the Streamlit Cloud dashboard."
+        "**No LLM provider configured.**  \n"
+        "Add at least one API key to `.env` (local) or **Secrets** (Streamlit Cloud):  \n\n"
+        "| Provider | Key | Free tier |\n"
+        "|---|---|---|\n"
+        "| Groq | `GROQ_API_KEY` | [console.groq.com](https://console.groq.com/) |\n"
+        "| NVIDIA NIM | `NVIDIA_API_KEY` | [build.nvidia.com](https://build.nvidia.com/) |\n"
+        "| OpenRouter | `OPENROUTER_API_KEY` | [openrouter.ai/keys](https://openrouter.ai/keys) |\n"
+        "| Google Gemini | `GOOGLE_API_KEY` | [aistudio.google.com](https://aistudio.google.com/apikey) |\n"
     )
     st.stop()
-
-os.environ["GOOGLE_API_KEY"] = api_key
 
 # ── Sidebar ───────────────────────────────────────────────────────────────────
 
 with st.sidebar:
     st.header("Settings")
+
+    # ── Provider selector ──────────────────────────────────────────────────────
+    st.subheader("LLM Provider")
+    _provider_options = {p: PROVIDERS[p]["label"] for p in _available}
+    selected_provider = st.selectbox(
+        "Active provider",
+        options=list(_provider_options.keys()),
+        format_func=lambda p: _provider_options[p],
+        label_visibility="collapsed",
+    )
+    os.environ["LLM_PROVIDER"] = selected_provider
+
+    _default_model = PROVIDERS[selected_provider]["default_model"]
+    _custom_model = st.text_input(
+        "Model override (optional)",
+        placeholder=_default_model,
+        help="Leave blank to use the default model for the selected provider.",
+    )
+    if _custom_model.strip():
+        os.environ["LLM_MODEL"] = _custom_model.strip()
+    elif "LLM_MODEL" in os.environ:
+        del os.environ["LLM_MODEL"]
+
+    st.caption(f"Default model: `{_default_model}`")
+    if len(_available) > 1:
+        st.caption(f"Auto-fallback enabled — {len(_available)} providers configured.")
+
+    st.divider()
+
     mode = st.radio("Mode", ["Fact Verification", "Guideline Compliance"], index=0)
 
     st.divider()
@@ -165,8 +210,9 @@ if run:
         claim_count_hint = len(document.strip().split("."))
         if claim_count_hint > 10:
             st.info(
-                "Large document detected. The free Gemini tier allows ~15 requests/minute — "
-                "verification may take a few minutes and will auto-retry on rate limits."
+                "Large document detected. Free-tier providers have rate limits — "
+                "verification may take a few minutes. The client will auto-retry and "
+                "fall back to other configured providers on rate-limit errors."
             )
 
         try:
