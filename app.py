@@ -1,4 +1,4 @@
-"""Streamlit frontend for the Document Verification System."""
+"""Streamlit frontend for Verdikt."""
 
 import os
 
@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 st.set_page_config(
-    page_title="Document Verification System",
+    page_title="Verdikt",
     page_icon="🔍",
     layout="wide",
 )
@@ -37,7 +37,7 @@ st.markdown(
 
 # ── Header ────────────────────────────────────────────────────────────────────
 
-st.title("🔍 Document Verification System")
+st.title("🔍 Verdikt")
 st.caption("Evidence-grounded, claim-level verification — no black-box confidence scores.")
 
 # ── Provider setup ────────────────────────────────────────────────────────────

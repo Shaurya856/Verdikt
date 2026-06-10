@@ -1,4 +1,4 @@
-# Document Verification System
+# Verdikt
 
 Evidence-grounded document verification with two modes:
 

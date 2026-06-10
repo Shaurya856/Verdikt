@@ -150,7 +150,7 @@ def cmd_guideline(args) -> None:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Document Verification System — fact checking and guideline compliance."
+        description="Verdikt — fact checking and guideline compliance."
     )
     subparsers = parser.add_subparsers(dest="mode", required=True)
 
