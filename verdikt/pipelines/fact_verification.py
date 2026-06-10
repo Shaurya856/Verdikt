@@ -4,12 +4,12 @@ from dataclasses import dataclass, field
 
 from typing import Optional
 
-from fact_checker.components.aggregator import aggregate_nli
-from fact_checker.components.aligner import align_claim
-from fact_checker.components.claim_extractor import extract_claims
-from fact_checker.components.chunker import chunk_document
-from fact_checker.components.evidence_retriever import get_evidence_passages
-from fact_checker.components.metrics import compute_fact_metrics
+from verdikt.components.aggregator import aggregate_nli
+from verdikt.components.aligner import align_claim
+from verdikt.components.claim_extractor import extract_claims
+from verdikt.components.chunker import chunk_document
+from verdikt.components.evidence_retriever import get_evidence_passages
+from verdikt.components.metrics import compute_fact_metrics
 
 
 @dataclass

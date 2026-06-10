@@ -2,11 +2,11 @@
 
 from dataclasses import dataclass, field
 
-from fact_checker.components.aggregator import aggregate_constraint
-from fact_checker.components.aligner import align_constraint
-from fact_checker.components.chunker import chunk_document
-from fact_checker.components.guideline_parser import Constraint, parse_guidelines
-from fact_checker.components.metrics import compute_guideline_metrics
+from verdikt.components.aggregator import aggregate_constraint
+from verdikt.components.aligner import align_constraint
+from verdikt.components.chunker import chunk_document
+from verdikt.components.guideline_parser import Constraint, parse_guidelines
+from verdikt.components.metrics import compute_guideline_metrics
 
 
 @dataclass

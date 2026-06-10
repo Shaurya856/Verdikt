@@ -2,9 +2,9 @@
 
 from typing import Optional
 
-from fact_checker.components.chunker import chunk_document
-from fact_checker.sources.arxiv import search_arxiv
-from fact_checker.sources.wikipedia import search_wikipedia
+from verdikt.components.chunker import chunk_document
+from verdikt.sources.arxiv import search_arxiv
+from verdikt.sources.wikipedia import search_wikipedia
 
 
 def get_evidence_passages(

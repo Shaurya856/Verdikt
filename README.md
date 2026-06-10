@@ -36,8 +36,8 @@ You can configure multiple providers. The client uses the first one available an
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/your-username/fact_checker.git
-cd fact_checker
+git clone https://github.com/your-username/verdikt.git
+cd verdikt
 ```
 
 ### 2. Create a virtual environment
@@ -211,7 +211,7 @@ Document + Guidelines
 ## Project structure
 
 ```
-fact_checker/
+verdikt/
 ├── app.py                  # Streamlit UI
 ├── main.py                 # CLI entry point
 ├── requirements.txt
@@ -220,7 +220,7 @@ fact_checker/
 ├── .streamlit/
 │   ├── config.toml
 │   └── secrets.toml.example
-└── fact_checker/           # Python package
+└── verdikt/                # Python package
     ├── components/
     │   ├── aggregator.py   # Deterministic aggregation logic
     │   ├── aligner.py      # NLI alignment (LLM)

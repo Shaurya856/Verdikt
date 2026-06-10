@@ -1,7 +1,7 @@
 """LLM-based atomic claim extraction from document text."""
 
-from fact_checker.utils import llm_client
-from fact_checker.utils.json_parser import LLMParseError, extract_json_array
+from verdikt.utils import llm_client
+from verdikt.utils.json_parser import LLMParseError, extract_json_array
 
 _SYSTEM = """You are a claim extraction system. Extract all atomic factual claims from the given text.
 

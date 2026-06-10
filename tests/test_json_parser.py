@@ -1,6 +1,6 @@
 import pytest
 
-from fact_checker.utils.json_parser import (
+from verdikt.utils.json_parser import (
     LLMParseError,
     extract_json_array,
     extract_json_object,

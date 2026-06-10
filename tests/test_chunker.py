@@ -1,4 +1,4 @@
-from fact_checker.components.chunker import Chunk, chunk_document
+from verdikt.components.chunker import Chunk, chunk_document
 
 
 class TestChunkDocument:

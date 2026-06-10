@@ -1,7 +1,7 @@
 """LLM-based NLI alignment for both fact verification and guideline compliance."""
 
-from fact_checker.utils import llm_client
-from fact_checker.utils.json_parser import (
+from verdikt.utils import llm_client
+from verdikt.utils.json_parser import (
     LLMParseError,
     extract_json_object,
     normalize_constraint_label,

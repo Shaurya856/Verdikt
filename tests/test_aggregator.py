@@ -1,4 +1,4 @@
-from fact_checker.components.aggregator import aggregate_constraint, aggregate_nli
+from verdikt.components.aggregator import aggregate_constraint, aggregate_nli
 
 
 class TestAggregateNli:

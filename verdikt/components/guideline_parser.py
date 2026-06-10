@@ -2,8 +2,8 @@
 
 from dataclasses import dataclass
 
-from fact_checker.utils import llm_client
-from fact_checker.utils.json_parser import LLMParseError, extract_json_array
+from verdikt.utils import llm_client
+from verdikt.utils.json_parser import LLMParseError, extract_json_array
 
 _SYSTEM = """You are a guideline parsing system. Parse the given guidelines into a structured list of constraints.
 

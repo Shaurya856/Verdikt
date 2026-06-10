@@ -1,6 +1,6 @@
 import pytest
 
-from fact_checker.components.metrics import compute_fact_metrics, compute_guideline_metrics
+from verdikt.components.metrics import compute_fact_metrics, compute_guideline_metrics
 
 
 class TestComputeFactMetrics:

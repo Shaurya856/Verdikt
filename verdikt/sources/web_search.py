@@ -51,7 +51,7 @@ if _MCP_AVAILABLE:
 if not _MCP_AVAILABLE:
     import requests
 
-    _HEADERS = {"User-Agent": "fact-checker/1.0 (educational project)"}
+    _HEADERS = {"User-Agent": "verdikt/1.0 (educational project)"}
 
     def fetch_url(url: str) -> str:
         """Fetch a URL using plain requests (fallback for Python < 3.11)."""

@@ -1,7 +1,7 @@
 import pytest
 from unittest.mock import patch
 
-import fact_checker.utils.llm_client as llm_client
+import verdikt.utils.llm_client as llm_client
 
 
 class TestAvailableProviders:

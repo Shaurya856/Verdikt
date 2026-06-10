@@ -51,7 +51,7 @@ for _k in _SECRET_KEYS:
         if _v:
             os.environ[_k] = _v
 
-from fact_checker.utils.llm_client import PROVIDERS, available_providers  # noqa: E402
+from verdikt.utils.llm_client import PROVIDERS, available_providers  # noqa: E402
 
 _available = available_providers()
 
@@ -205,7 +205,7 @@ if run:
 
     # ── Fact Verification ──────────────────────────────────────────────────────
     if mode == "Fact Verification":
-        from fact_checker.pipelines.fact_verification import run_fact_verification
+        from verdikt.pipelines.fact_verification import run_fact_verification
 
         claim_count_hint = len(document.strip().split("."))
         if claim_count_hint > 10:
@@ -271,7 +271,7 @@ if run:
 
     # ── Guideline Compliance ───────────────────────────────────────────────────
     else:
-        from fact_checker.pipelines.guideline_compliance import run_guideline_compliance
+        from verdikt.pipelines.guideline_compliance import run_guideline_compliance
 
         try:
             with st.spinner("Parsing guidelines and checking compliance…"):

@@ -3,7 +3,7 @@
 import json
 import urllib.parse
 
-from fact_checker.sources.web_search import fetch_url
+from verdikt.sources.web_search import fetch_url
 
 _WIKI_API = "https://en.wikipedia.org/w/api.php"
 

@@ -11,7 +11,7 @@ load_dotenv()
 
 
 def _check_api_key():
-    from fact_checker.utils.llm_client import PROVIDERS, available_providers, _PROVIDER_PRIORITY
+    from verdikt.utils.llm_client import PROVIDERS, available_providers, _PROVIDER_PRIORITY
 
     if not available_providers():
         keys = ", ".join(PROVIDERS[p]["env_key"] for p in _PROVIDER_PRIORITY)
@@ -88,7 +88,7 @@ def cmd_fact(args) -> None:
     document = args.text or open(args.document).read()
     reference = open(args.reference).read() if args.reference else None
 
-    from fact_checker.pipelines.fact_verification import run_fact_verification
+    from verdikt.pipelines.fact_verification import run_fact_verification
 
     result = run_fact_verification(
         document=document,
@@ -119,7 +119,7 @@ def cmd_guideline(args) -> None:
     document = args.text or open(args.document).read()
     guidelines = args.guidelines_text or open(args.guidelines).read()
 
-    from fact_checker.pipelines.guideline_compliance import run_guideline_compliance
+    from verdikt.pipelines.guideline_compliance import run_guideline_compliance
 
     result = run_guideline_compliance(
         document=document,

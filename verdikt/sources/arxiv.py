@@ -4,7 +4,7 @@ import re
 import urllib.parse
 import xml.etree.ElementTree as ET
 
-from fact_checker.sources.web_search import fetch_url
+from verdikt.sources.web_search import fetch_url
 
 _ARXIV_API = "https://export.arxiv.org/api/query"
 _ATOM_NS = {"atom": "http://www.w3.org/2005/Atom"}
